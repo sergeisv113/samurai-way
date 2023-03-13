@@ -1,0 +1,34 @@
+.nav {
+    grid-area: n;
+    background-color: #3a420f;
+    padding-top: 20px;
+}
+
+.item  {
+    color: whitesmoke;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.itemText {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.active  {
+    color: gold;
+}
+
+.sidebar h2 {
+    margin-left: 20px;
+    margin-top: 100px;
+    font-size: 30px;
+    width: 102px;
+
+}
+
+.sidebar a{
+    color: whitesmoke;
+    text-decoration: none;
+}

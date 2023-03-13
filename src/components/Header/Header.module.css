@@ -1,0 +1,25 @@
+.header {
+    grid-area: h;
+    background-color: #65efcd;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+
+.header img {
+    width: 70px;
+    border-radius: 10px;
+    padding-left: 30px;
+}
+
+.loginBlock {
+    float: right;
+    padding-right: 30px;
+    margin-top: 24px;
+    color: #0a0a0a;
+}
+
+.loginBlock a{
+    color: #0a0a0a;
+    text-decoration: none;
+}
