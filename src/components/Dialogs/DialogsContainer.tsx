@@ -11,6 +11,7 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
 type MapStatePropsType = {
     messagesPage: MessagesPageType
+    isAuth: boolean;
 }
 
 type MapDispatchPropsType = {
@@ -24,6 +25,7 @@ type MapDispatchPropsType = {
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         messagesPage: state.messagesPage,
+        isAuth: state.auth.isAuth//redirect
     }
 }
 

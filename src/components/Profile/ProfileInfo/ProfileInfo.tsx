@@ -14,9 +14,6 @@ export const ProfileInfo = (props: UsersProfilePropsType) => {
 
     return (
         <div>
-            {/*<div className={s.wallImg}>*/}
-            {/*    <img src="https://i.pinimg.com/originals/b0/47/48/b047482b30fe60adac38bbfe05fbe7f2.jpg"/>*/}
-            {/*</div>*/}
 
             <div className={s.profileContainer}>
                 <img className={s.avatar}
