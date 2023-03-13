@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/samurai-wai/static/css/main.9b4d1b48.css",
-    "main.js": "/samurai-wai/static/js/main.5184b674.js",
-    "static/media/friend2.svg": "/samurai-wai/static/media/friend2.c70be7dc98ac2a416ff05d5cc016c46a.svg",
-    "static/media/friend1.svg": "/samurai-wai/static/media/friend1.19476069b4da48924f52f1b652387877.svg",
-    "static/media/user2.svg": "/samurai-wai/static/media/user2.615c1eac946e6f6a87e1c9da6a5c9b1c.svg",
-    "static/media/logo.svg": "/samurai-wai/static/media/logo.8db8592349bc3a647f6823b72519e98d.svg",
-    "static/media/user1.svg": "/samurai-wai/static/media/user1.6aa483a019cbd2050939748c8fc685f0.svg",
-    "static/media/defaultAva.svg": "/samurai-wai/static/media/defaultAva.411803eca5270dcb3299ef65e5a69c3e.svg",
-    "static/media/Bean Eater-1.1s-197px.svg": "/samurai-wai/static/media/Bean Eater-1.1s-197px.a7a9d301875bf2635f02c1735300ecfe.svg",
-    "static/media/user4.svg": "/samurai-wai/static/media/user4.6d36223741d062327a0f7e4601b02b4a.svg",
-    "static/media/friend3.svg": "/samurai-wai/static/media/friend3.ee0705a34635b14e9bd1a68803fe147b.svg",
-    "static/media/user3.svg": "/samurai-wai/static/media/user3.b91b8a9ef6405add7efddc8268ea72a0.svg",
-    "static/media/icon-sun.svg": "/samurai-wai/static/media/icon-sun.c3177fa453380a8147df081ec10c2789.svg",
-    "static/media/icon-website.svg": "/samurai-wai/static/media/icon-website.cf4904e442232792159e0e1bd2d500aa.svg",
-    "static/media/icon-company.svg": "/samurai-wai/static/media/icon-company.6331bb91a37d52462978487317f0c6e9.svg",
-    "index.html": "/samurai-wai/index.html",
-    "static/media/icon-twitter.svg": "/samurai-wai/static/media/icon-twitter.4fcae7ca106860a363d667535442c085.svg",
-    "static/media/icon-moon.svg": "/samurai-wai/static/media/icon-moon.f5076b814caae9443a0b8ee24682ed13.svg",
-    "static/media/icon-search.svg": "/samurai-wai/static/media/icon-search.0cc0c98424cc75d5e1dfbb9e3abb6785.svg",
-    "static/media/icon-location.svg": "/samurai-wai/static/media/icon-location.f6d18983ab4be8b3314d51c208fba4d4.svg",
-    "main.9b4d1b48.css.map": "/samurai-wai/static/css/main.9b4d1b48.css.map",
-    "main.5184b674.js.map": "/samurai-wai/static/js/main.5184b674.js.map"
+    "main.css": "/samurai-way/static/css/main.9b4d1b48.css",
+    "main.js": "/samurai-way/static/js/main.800a276c.js",
+    "static/media/friend2.svg": "/samurai-way/static/media/friend2.c70be7dc98ac2a416ff05d5cc016c46a.svg",
+    "static/media/friend1.svg": "/samurai-way/static/media/friend1.19476069b4da48924f52f1b652387877.svg",
+    "static/media/user2.svg": "/samurai-way/static/media/user2.615c1eac946e6f6a87e1c9da6a5c9b1c.svg",
+    "static/media/logo.svg": "/samurai-way/static/media/logo.8db8592349bc3a647f6823b72519e98d.svg",
+    "static/media/user1.svg": "/samurai-way/static/media/user1.6aa483a019cbd2050939748c8fc685f0.svg",
+    "static/media/defaultAva.svg": "/samurai-way/static/media/defaultAva.411803eca5270dcb3299ef65e5a69c3e.svg",
+    "static/media/Bean Eater-1.1s-197px.svg": "/samurai-way/static/media/Bean Eater-1.1s-197px.a7a9d301875bf2635f02c1735300ecfe.svg",
+    "static/media/user4.svg": "/samurai-way/static/media/user4.6d36223741d062327a0f7e4601b02b4a.svg",
+    "static/media/friend3.svg": "/samurai-way/static/media/friend3.ee0705a34635b14e9bd1a68803fe147b.svg",
+    "static/media/user3.svg": "/samurai-way/static/media/user3.b91b8a9ef6405add7efddc8268ea72a0.svg",
+    "static/media/icon-sun.svg": "/samurai-way/static/media/icon-sun.c3177fa453380a8147df081ec10c2789.svg",
+    "static/media/icon-website.svg": "/samurai-way/static/media/icon-website.cf4904e442232792159e0e1bd2d500aa.svg",
+    "static/media/icon-company.svg": "/samurai-way/static/media/icon-company.6331bb91a37d52462978487317f0c6e9.svg",
+    "index.html": "/samurai-way/index.html",
+    "static/media/icon-twitter.svg": "/samurai-way/static/media/icon-twitter.4fcae7ca106860a363d667535442c085.svg",
+    "static/media/icon-moon.svg": "/samurai-way/static/media/icon-moon.f5076b814caae9443a0b8ee24682ed13.svg",
+    "static/media/icon-search.svg": "/samurai-way/static/media/icon-search.0cc0c98424cc75d5e1dfbb9e3abb6785.svg",
+    "static/media/icon-location.svg": "/samurai-way/static/media/icon-location.f6d18983ab4be8b3314d51c208fba4d4.svg",
+    "main.9b4d1b48.css.map": "/samurai-way/static/css/main.9b4d1b48.css.map",
+    "main.800a276c.js.map": "/samurai-way/static/js/main.800a276c.js.map"
   },
   "entrypoints": [
     "static/css/main.9b4d1b48.css",
-    "static/js/main.5184b674.js"
+    "static/js/main.800a276c.js"
   ]
 }
