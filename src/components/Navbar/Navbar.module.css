@@ -2,6 +2,8 @@
     grid-area: n;
     background-color: #3a420f;
     padding-top: 20px;
+    margin: 5px;
+    border-radius: 15px;
 }
 
 .item  {
@@ -14,6 +16,7 @@
 .itemText {
     color: whitesmoke;
     text-decoration: none;
+    font-size: 25px;
 }
 
 .active  {

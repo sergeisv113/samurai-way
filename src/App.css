@@ -2,7 +2,7 @@
     margin: 0 auto;
     display: grid;
     width: 1350px;
-    height: 900px;
+    height: 550px;
     grid-template-areas:
     'h h h'
     'n c a';
@@ -15,7 +15,12 @@
     grid-area: c;
     background-color: #157cb7;
     width: 100%;
+    margin: 5px;
+    border-radius: 15px;
+}
+.app-routes {
     overflow-y: scroll;
+    margin: 15px;
 }
 
 

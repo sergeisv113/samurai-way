@@ -20,13 +20,15 @@ export const App = () => {
             <Navbar />
             <Ava/>
             <div className="app-contents">
-                <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                <Route path="/dialog" render={() => <DialogsContainer/>}/>
-                <Route path="/news" render={() => <News/>}/>
-                <Route path="/music" render={() => <Music/>}/>
-                <Route path="/settings" render={() => <Settings/>}/>
-                <Route path="/users" render={() => <UsersContainer/>}/>
-                <Route path="/login" render={() => <Login/>}/>
+                <div className='app-routes'>
+                    <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                    <Route path="/dialog" render={() => <DialogsContainer/>}/>
+                    <Route path="/news" render={() => <News/>}/>
+                    <Route path="/music" render={() => <Music/>}/>
+                    <Route path="/settings" render={() => <Settings/>}/>
+                    <Route path="/users" render={() => <UsersContainer/>}/>
+                    <Route path="/login" render={() => <Login/>}/>
+                </div>
             </div>
         </div>
 
