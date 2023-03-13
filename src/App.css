@@ -1,7 +1,7 @@
 .App {
     margin: 0 auto;
     display: grid;
-    width: 1650px;
+    width: 1350px;
     height: 900px;
     grid-template-areas:
     'h h h'
