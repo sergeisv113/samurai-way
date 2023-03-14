@@ -18,16 +18,16 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 10px 10px 10px 16px;
+  padding: 10px 19px 10px 16px;
   background-color: var(--search-bg, white);
   display: flex;
   align-items: center;
   box-shadow: var(--search-shadow);
   border-radius: 15px;
 
-  @media (min-width: 767px) {
+ /* @media (min-width: 767px) {
     padding: 10px 10px 10px 30px;
-  }
+  }*/
 
   &>button {
     flex-shrink: 0;
@@ -58,11 +58,11 @@
     outline: none;
   }
 
-  @media (min-width: 767px) {
+ /* @media (min-width: 767px) {
     margin: 0 5px;
     font-size: 1.25rem;
     margin: 0 5px;
-  }
+  }*/
 }
 
 .error {
@@ -74,10 +74,10 @@
   line-height: 1.5;
   font-weight: 700;
 
-  @media (min-width: 767px) {
+/*  @media (min-width: 767px) {
     right: 120px;
     top: 50%;
     transform: translateY(-50%);
     bottom: unset;
-  }
+  }*/
 }
