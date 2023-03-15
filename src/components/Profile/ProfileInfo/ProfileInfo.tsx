@@ -6,7 +6,7 @@ import {ProfileStatus} from './ProfileStatus';
 import defaultAva from '../../../img/defaultAva.svg'
 
 export const ProfileInfo = (props: UsersProfilePropsType) => {
-    const {profile} = props
+    const {profile,status, updateStatus } = props
 
     if (!profile) {
         return <Preloader/>
@@ -14,7 +14,6 @@ export const ProfileInfo = (props: UsersProfilePropsType) => {
 
     return (
         <div>
-
             <div className={s.profileContainer}>
                 <img className={s.avatar}
                      src={profile.photos.large !== null ? profile.photos.large : defaultAva}/>
@@ -22,9 +21,9 @@ export const ProfileInfo = (props: UsersProfilePropsType) => {
                 <div className={s.name}>
                     {profile.fullName}
                     <div className={s.aboutMe}>About me: {profile.aboutMe} </div>
-                    <ProfileStatus />
-                </div>
 
+                    <ProfileStatus status={status} updateStatus={updateStatus}/>
+                </div>
 
                 <div className={s.contacts}>
                     <h3>My contacts:</h3>
@@ -48,9 +47,7 @@ export const ProfileInfo = (props: UsersProfilePropsType) => {
                 </div>
             </div>
 
-
             <div className={s.statusJob}>Status Job: {profile.lookingForAJobDescription}</div>
-
 
         </div>
     );

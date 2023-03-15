@@ -4,6 +4,7 @@ import {DialogItem} from './DialogItem/DialogItem';
 import {Message} from './Message/Message';
 import {DialogsPropsType} from './DialogsContainer';
 import {Redirect} from "react-router-dom";
+import {Messages} from "./Message/Messages";
 
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -18,19 +19,10 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     const messageElements = state.messages.map((e) => {
         return (
-            <Message key={e.id} id={e.id} message={e.message}/>
+            <Messages key={e.id} id={e.id} message={e.message}/>
         )
     })
 
-
-    const onClickSendMessage = () => {
-        props.sendMessage()
-    }
-
-    const onMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let text = e.currentTarget.value
-        props.onMessageChange(text)
-    }
 
     // if(!props.isAuth) return <Redirect to={'/login'}/>
 
@@ -42,8 +34,8 @@ export const Dialogs = (props: DialogsPropsType) => {
 
             <div className={s.messages}>
                 <div>{messageElements}</div>
-                <div>
-                    <div>
+
+                    {/*<div>
                         <textarea placeholder={'Enter your message'}
                                   onChange={onMessageChange}
                                   value={state.newMessageText}/>
@@ -51,7 +43,9 @@ export const Dialogs = (props: DialogsPropsType) => {
                     <div>
                         <button onClick={onClickSendMessage}>send message</button>
                     </div>
-                </div>
+                </div>*/}
+
+                    <Message />
             </div>
         </div>
     );
