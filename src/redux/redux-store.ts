@@ -29,7 +29,7 @@ export type StateType = {
 }
 export type ProfilePageType = {
     posts: PostsProps[]
-    newPostText: string
+    // newPostText: string
     profile: UserProfileType | null
     status: string
 }
@@ -46,7 +46,7 @@ export type AuthType = {
 export type MessagesPageType = {
     messages: MessagesType[]
     dialogs: DialogsType[]
-    newMessageText: string
+    // newMessageText: string
 }
 export type SidebarType = {
     friends: FriendsType[]

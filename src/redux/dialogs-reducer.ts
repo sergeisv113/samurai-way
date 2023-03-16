@@ -7,7 +7,7 @@ import user4 from '../img/user4.svg'
 
 
 const SEND_MESSAGE = 'SEND_MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT'
 
 const initialState = {
     messages: [
@@ -38,21 +38,22 @@ const initialState = {
             ava: user4
         },
     ],
-    newMessageText: '',
-}
+    // newMessageText: '',
+ }
 
 export const dialogsReducer = (state: MessagesPageType = initialState, action: UniversalTypeForMessagesPageType) => {
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessage = {
                 id: v1(),
-                message: state.newMessageText
+                message: action.newMessageText
             }
-            return {...state, messages: [...state.messages, newMessage], newMessageText: ''}
+            return {...state, messages: [...state.messages, newMessage]}
         }
-        case UPDATE_NEW_MESSAGE_TEXT: {
+ /*       case UPDATE_NEW_MESSAGE_TEXT: {
             return {...state, newMessageText: action.newText}
         }
+    */
         default:
             return state
     }
@@ -60,7 +61,7 @@ export const dialogsReducer = (state: MessagesPageType = initialState, action: U
 
 export type UniversalTypeForMessagesPageType =
     | ReturnType<typeof sendMessageAC>
-    | ReturnType<typeof onMessageChangeAC>
+    // | ReturnType<typeof onMessageChangeAC>
 
-export const sendMessageAC = () => ({type: SEND_MESSAGE} as const)
-export const onMessageChangeAC = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text} as const)
+export const sendMessageAC = (newMessageText: string) => ({type: SEND_MESSAGE, newMessageText} as const)
+// export const onMessageChangeAC = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: text} as const)
