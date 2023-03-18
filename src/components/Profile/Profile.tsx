@@ -9,7 +9,10 @@ export const Profile = (props: UsersProfilePropsType) => {
 
     return (
         <div>
-            <ProfileInfo  profile={profile} updateStatus={updateStatus} status={status}  getProfile={getProfile} getStatus={getStatus}/>
+            <ProfileInfo  profile={profile} updateStatus={updateStatus} status={status}  getProfile={getProfile} getStatus={getStatus}
+
+            />
+
             <MyPostsContainer/>
         </div>
     );

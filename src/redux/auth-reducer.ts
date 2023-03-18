@@ -1,4 +1,4 @@
-import {AuthType, MessagesPageType, UserType} from './redux-store';
+import {AuthType} from './redux-store';
 import {Dispatch} from 'react';
 import {authAPI} from '../api/api';
 

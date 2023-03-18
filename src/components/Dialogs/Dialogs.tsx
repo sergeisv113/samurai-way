@@ -5,6 +5,8 @@ import {DialogsPropsType} from './DialogsContainer';
 
 import {Messages} from "./Message/Messages";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthCreator, minLengthCreator, required} from "../../utils/validators/validator";
+import {AddMessageForm} from "./Message/AddMessageForm";
 
 
 
@@ -27,7 +29,6 @@ export const Dialogs = (props: DialogsPropsType) => {
     let addMessage = (values: any) => {
         props.sendMessage( values.newMessageText)
     }
-    // if(!props.isAuth) return <Redirect to={'/login'}/>
 
     return (
         <div className={s.dialogs}>
@@ -48,31 +49,10 @@ export const Dialogs = (props: DialogsPropsType) => {
                 </div>*/}
                  </div>
             <div>
-                <AddMessageFormRedux onSubmit={addMessage}/>
+                <AddMessageForm onSubmit={addMessage}/>
             </div>
         </div>
     );
 };
 
-const AddMessageForm = (props: InjectedFormProps) => {
-    const { handleSubmit } = props
-
-    return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Field placeholder={'Enter your message'}
-                           name={'newMessageText'}
-                           component={'textarea'}/>
-                </div>
-                <div>
-                    <button>send message</button>
-                </div>
-            </form>
-        </>
-    )
-}
-const AddMessageFormRedux = reduxForm({
-    form: 'dialogAddMessageForm'//=no form iz store, a unique for the form
-})(AddMessageForm)
 

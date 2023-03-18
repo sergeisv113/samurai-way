@@ -12,10 +12,10 @@ export type UsersProfilePropsType = MapStatePropsType & MapDispatchPropsType
 type MapStatePropsType = {
     profile: UserProfileType | null
     status: string
+
+    // isAuth: boolean
 }
-/*type MapStateRedirectPropsType = {
-    isAuth: boolean
-}*/
+
 type MapDispatchPropsType = {
     getProfile: (userId: string) => void
     getStatus: (userId: string) => void
@@ -29,12 +29,10 @@ type PropsType = RouteComponentProps<PathParamType> & UsersProfilePropsType
 
 class ProfileContainer extends React.Component <PropsType> {
     componentDidMount() {
-        let userId = this.props.match.params.userId
-        if (!userId) {
-            userId = '2';
-        }
-        this.props.getProfile(userId)
-        this.props.getStatus(userId)
+        // let userId = +this.props.match.params.userId || this.props.meId || 2
+        let userId = +this.props.match.params.userId || 2
+            this.props.getProfile(String(userId))
+            this.props.getStatus(String(userId))
     }
 
     render() {
@@ -43,7 +41,7 @@ class ProfileContainer extends React.Component <PropsType> {
             updateStatus,
             status,
             getProfile,
-            getStatus
+            getStatus,
         } = this.props
 
         return (
@@ -59,14 +57,11 @@ class ProfileContainer extends React.Component <PropsType> {
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+
     }
 }
-/*const mapStateToPropsRedirect = (state: AppStateType): MapStateRedirectPropsType => {
-    return {
-        isAuth: state.auth.isAuth//redirect
-    }
-}*/
+
 const mapDispatchToProps: MapDispatchPropsType = {
     getProfile: getProfileTC,
     getStatus: getStatusTC,
@@ -84,5 +79,5 @@ const mapDispatchToProps: MapDispatchPropsType = {
 export default compose<React.ComponentType>(
     connect(mapStateToProps, mapDispatchToProps),
      withRouter,
-     withAuthRedirect
+      withAuthRedirect
 )(ProfileContainer)

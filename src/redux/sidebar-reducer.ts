@@ -11,8 +11,7 @@ const initialState = {
             name: 'Kolya',
             ava: friend1
         },
-        {
-            id: v1(),
+        {            id: v1(),
             name: 'Kostya',
             ava: friend2
         },

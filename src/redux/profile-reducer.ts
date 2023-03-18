@@ -7,6 +7,7 @@ const ADD_POST = 'ADD_POST'
 // const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
+const DELETE_POST = 'DELETE_POST'
 
 const initialState = {
     posts: [
@@ -35,6 +36,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Un
         case SET_USER_PROFILE : {
             return {...state, profile: action.profile}
         }
+        case DELETE_POST : {
+            return {...state, posts: state.posts.filter(p => p.id !== action.id)}
+        }
         case SET_STATUS:{
             return {
                 ...state, status: action.status
@@ -50,11 +54,13 @@ export type UniversalTypeForProfileActions =
     // | ReturnType<typeof updateNewPostTextAC>
     | ReturnType<typeof getUserProfileAC>
     | ReturnType<typeof setStatusAC>
+    | ReturnType<typeof deletePostAC>
 
 export const addPostAC = (newPostText: string) => ({type: ADD_POST, newPostText} as const)
 // export const updateNewPostTextAC = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text} as const)
 export const getUserProfileAC = (profile: UserProfileType) =>({type: SET_USER_PROFILE, profile} as const)
 export const setStatusAC = (status: string) =>({type: SET_STATUS, status} as const)
+export const deletePostAC = (id: string) => ({type: 'DELETE_POST', id} as const)
 
 export const getProfileTC = (userId: string) => {
     return (dispatch: Dispatch<UniversalTypeForProfileActions>) => {

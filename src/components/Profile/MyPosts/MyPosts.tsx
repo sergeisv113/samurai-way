@@ -3,13 +3,15 @@ import s from './MyPosts.module.css'
 import {Post} from './Post/Post';
 import {MyPostsType} from './MyPostsContainer';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validator";
+import {AddNewPostForm} from "./NewPostForm";
 
 
 export const MyPosts = (props: MyPostsType) => {
 
-    const state = props.profilePage
+    // const state = props.profilePage
 
-    const postsElement = state.posts.map((e) => {
+    const postsElement = props.posts.map((e) => {
         return (
             <Post key={e.id} message={e.message} counterLike={e.counterLike}/>
         )
@@ -37,7 +39,8 @@ export const MyPosts = (props: MyPostsType) => {
             <div>
                 <button onClick={addPost}>Add post</button>
             </div>
-*/}          <AddNewPostFormRedux onSubmit={addPost}/>
+*/}
+            <AddNewPostForm onSubmit={addPost}/>
             <div>
 
             </div>
@@ -48,23 +51,3 @@ export const MyPosts = (props: MyPostsType) => {
         </div>
     );
 }
-const AddNewPostForm = (props: InjectedFormProps) => {
-    const {handleSubmit} = props
-
-    return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <Field placeholder={"Enter your post"}
-                           name={'newPostText'}
-                           component={'textarea'}
-                    />
-                </div>
-                <div><button>Add post</button></div>
-            </form>
-        </>
-    )
-}
-const AddNewPostFormRedux = reduxForm({
-    form: 'ProfileAddPostFormRedux'//=no form iz store, a unique for the form
-})(AddNewPostForm)

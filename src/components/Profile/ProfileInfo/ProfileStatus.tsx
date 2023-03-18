@@ -28,7 +28,8 @@ export class ProfileStatus extends React.Component<ProfileStatusProps>{
         })
     }
 
-    componentDidUpdate(prevProps: Readonly<ProfileStatusProps>, prevState: Readonly<{}>, snapshot?: any) {//otrisovka statusa
+/*    componentDidUpdate(prevProps: Readonly<ProfileStatusProps>, prevState: Readonly<{}>, snapshot?: any) {//otrisovka statusa*/
+    componentDidUpdate(prevProps: { status: string; }, prevState: any) {//otrisovka statusa
         // debugger
         if (prevProps.status !== this.props.status) {
             this.setState({
