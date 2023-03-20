@@ -1,7 +1,6 @@
-import {ProfilePageType, UserProfileType} from './redux-store';
+import {AppThunkType, ProfilePageType, UserProfileType} from './redux-store';
 import {v1} from 'uuid';
-import {Dispatch} from 'react';
-import {profileAPI, userAPI} from "../api/api";
+import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST'
 // const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
@@ -62,27 +61,23 @@ export const getUserProfileAC = (profile: UserProfileType) =>({type: SET_USER_PR
 export const setStatusAC = (status: string) =>({type: SET_STATUS, status} as const)
 export const deletePostAC = (id: string) => ({type: 'DELETE_POST', id} as const)
 
-export const getProfileTC = (userId: string) => {
-    return (dispatch: Dispatch<UniversalTypeForProfileActions>) => {
+export const getProfileTC = (userId: number): AppThunkType => (dispatch) => {
         profileAPI.getProfile(userId)
-            .then(response => dispatch(getUserProfileAC(response.data))
+            .then(data => dispatch(getUserProfileAC(data))
             )
     }
-}
-export const getStatusTC = (userId: string) => {
-    return (dispatch: Dispatch<UniversalTypeForProfileActions>) => {
+
+export const getStatusTC = (userId: number): AppThunkType => (dispatch) => {
         profileAPI.getStatus(userId)
-            .then(response => dispatch(setStatusAC(response.data))
+            .then(data => dispatch(setStatusAC(data))
             )
     }
-}
-export const updateStatusTC = (status: string) => {
-    return (dispatch: Dispatch<UniversalTypeForProfileActions>) => {
+
+export const updateStatusTC = (status: string): AppThunkType => (dispatch) => {
         profileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatusAC(response.data))
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(setStatusAC(status))
                 }
             })
     }
-}

@@ -15,12 +15,12 @@ type MapStatePropsType = {
     totalUserCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: Array<string>
+    followingInProgress: Array<number>
 }
 type MapDispatchPropsType = {
     getUser: (currentPage: number, pageSize: number) => void
-    onFollowUser: (userId: string) => void
-    onUnfollowUser: (userId: string) => void
+    onFollowUser: (id: number) => void
+    onUnfollowUser: (id: number) => void
     forPageChanged: (currentPage: number, pageSize: number) => void
 }
 
@@ -32,14 +32,14 @@ class UsersContainer extends React.Component<UsersPropsType> {
         //this.props.getUserTC()
     }
 
-    onFollowHandler = (userId: string) => {
-        this.props.onFollowUser(userId)
+   /* onFollowHandler = (userId: string) => {
+        this.props.onFollowUser(id)
     }
 
     onUnfollowHandler = (userId: string) => {
-        this.props.onUnfollowUser(userId)
+        this.props.onUnfollowUser(id)
 
-    }
+    }*/
     onChangedPageHandler = (currentPage: number) => {
         this.props.forPageChanged(currentPage, this.props.pageSize)
     }

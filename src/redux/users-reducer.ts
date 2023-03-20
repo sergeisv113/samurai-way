@@ -1,5 +1,4 @@
-import {UserType, UsersPageType} from './redux-store';
-import {Dispatch} from 'react';
+import {UserType, UsersPageType, AppThunkType} from './redux-store';
 import {userAPI} from "../api/api";
 
 const STATUS_FOLLOW = 'STATUS_FOLLOW'
@@ -62,8 +61,8 @@ export const usersReducer = (state: UsersPageType = initialState, action: Univer
             return {
                 ...state,
                 followingInProgress: action.isFetching
-                    ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id !== action.userId)
+                    ? [...state.followingInProgress, action.id]
+                    : state.followingInProgress.filter(el => el !== action.id)
             }
         }
         default:
@@ -80,60 +79,53 @@ export type UniversalTypeForUserActions =
     | ReturnType<typeof setToggleIsFetchAC>
     | ReturnType<typeof statusFollowingAC>
 //Actions -----------
-export const followSuccessAC = (userId: string) => ({type: STATUS_FOLLOW, userId} as const)
-export const unfollowSuccessAC = (userId: string) => ({type: STATUS_UNFOLLOW, userId} as const)
+export const followSuccessAC = (userId: number) => ({type: STATUS_FOLLOW, userId} as const)
+export const unfollowSuccessAC = (userId: number) => ({type: STATUS_UNFOLLOW, userId} as const)
 export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users} as const)
 export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage} as const)
 export const setTotalUserCountsAC = (totalUsersCount: number) => ({type: SET_TOTAL_COUNT, totalUsersCount} as const)
 export const setToggleIsFetchAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCH, isFetching} as const)
-export const statusFollowingAC = (userId: string, isFetching: boolean) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, userId, isFetching,} as const)
+export const statusFollowingAC = (id: number, isFetching: boolean) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, id, isFetching,} as const)
 // ThunkCreators -------
-export const getUserTC = (currentPage: number, pageSize: number) => {
-    return (dispatch: Dispatch<UniversalTypeForUserActions>) => {
+export const getUserTC = (currentPage: number, pageSize: number): AppThunkType =>  (dispatch) => {
         dispatch(setToggleIsFetchAC(true))
         userAPI.getUsers(currentPage, pageSize)
-            .then(response => {
+            .then((data) => {
                 dispatch(setToggleIsFetchAC(false))
-                dispatch(setUsersAC(response.data.items))
-                dispatch(setTotalUserCountsAC(response.data.totalCount))
+                dispatch(setUsersAC(data.items))
+                dispatch(setTotalUserCountsAC(data.totalCount))
             })
     }
-}
 
-export const onFollowUserTC = (userId: string) => {
-    return (dispatch: Dispatch<UniversalTypeForUserActions>) => {
-        dispatch(statusFollowingAC(userId, true))
-        userAPI.followOnUser(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccessAC(userId))
+export const onFollowUserTC = (id: number): AppThunkType => (dispatch) => {
+        dispatch(statusFollowingAC(id, true))
+        userAPI.followOnUser(id)
+            .then((data) => {
+                if (data.resultCode === 0) {
+                    dispatch(followSuccessAC(id))
                 }
-                dispatch(statusFollowingAC(userId, false))
+                dispatch(statusFollowingAC(id, false))
             })
     }
-}
 
-export const onUnfollowUserTC = (userId: string) => {
-    return (dispatch: Dispatch<UniversalTypeForUserActions>) => {
-        dispatch(statusFollowingAC(userId, true))
-        userAPI.unfollowOnUser(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccessAC(userId))
+
+export const onUnfollowUserTC = (id: number): AppThunkType =>  (dispatch) => {
+        dispatch(statusFollowingAC(id, true))
+        userAPI.unfollowOnUser(id)
+            .then((data) => {
+                if (data.resultCode === 0) {
+                    dispatch(unfollowSuccessAC(id))
                 }
-                dispatch(statusFollowingAC(userId, false))
+                dispatch(statusFollowingAC(id, false))
             })
     }
-}
 
-export const forPageChangedTC = (currentPage: number, pageSize: number) => {
-    return (dispatch: Dispatch<UniversalTypeForUserActions>) => {
+export const forPageChangedTC = (currentPage: number, pageSize: number): AppThunkType => (dispatch) => {
         dispatch(setToggleIsFetchAC(true))
         dispatch(setCurrentPageAC(currentPage))
         userAPI.getUsers(currentPage, pageSize)
-            .then((response) => {
+            .then((data) => {
                 dispatch(setToggleIsFetchAC(false))
-                dispatch(setUsersAC(response.data.items))
+                dispatch(setUsersAC(data.items))
             })
     }
-}

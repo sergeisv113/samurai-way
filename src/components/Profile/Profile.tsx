@@ -1,20 +1,29 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {MyPostsContainer} from './MyPosts/MyPostsContainer';
-import {UsersProfilePropsType} from './ProfileContainer';
+import {UserProfileType} from "../../redux/redux-store";
+import {Redirect} from "react-router-dom";
 
-
-export const Profile = (props: UsersProfilePropsType) => {
-    const {profile, updateStatus, status, getProfile, getStatus} = props
+type PropsType = {
+    profile: UserProfileType
+    status: string
+    updateStatus: (status: string) => void
+    children?: ReactNode
+    isAuth: boolean
+}
+export const Profile = (props: PropsType) => {
+   // debugger
+    const {profile, updateStatus, status, isAuth} = props
 
     return (
-        <div>
-            <ProfileInfo  profile={profile} updateStatus={updateStatus} status={status}  getProfile={getProfile} getStatus={getStatus}
-
-            />
-
-            <MyPostsContainer/>
-        </div>
+           !isAuth
+               ? <Redirect to={"/login"}/>
+               :
+                <div>
+                    <ProfileInfo  profile={profile} updateStatus={updateStatus} status={status}
+                    />
+                   <MyPostsContainer/>
+                </div>
     );
 };
 

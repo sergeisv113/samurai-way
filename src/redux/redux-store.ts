@@ -1,12 +1,25 @@
 
 import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {profileReducer, UniversalTypeForProfileActions} from './profile-reducer';
-import {dialogsReducer, UniversalTypeForMessagesPageType} from './dialogs-reducer';
+import {
+    addPostAC, deletePostAC,
+    getUserProfileAC,
+    profileReducer,
+    setStatusAC,
+    UniversalTypeForProfileActions
+} from './profile-reducer';
+import {dialogsReducer, sendMessageAC, UniversalTypeForMessagesPageType} from './dialogs-reducer';
 import {sidebarReducer} from './sidebar-reducer';
-import {UniversalTypeForUserActions, usersReducer} from './users-reducer';
-import {authReducer, UniversalTypeForAuthType} from './auth-reducer';
-import thunkMiddleware from 'redux-thunk'
-import {reducer as formReducer} from "redux-form";
+import {
+    followSuccessAC, setCurrentPageAC, setToggleIsFetchAC, setTotalUserCountsAC,
+    setUsersAC, statusFollowingAC,
+    unfollowSuccessAC,
+    UniversalTypeForUserActions,
+    usersReducer
+} from './users-reducer';
+import {authReducer, setAuthUserDataAC, UniversalTypeForAuthType} from './auth-reducer';
+import thunkMiddleware, {ThunkAction} from 'redux-thunk'
+import {FormAction, reducer as formReducer} from "redux-form";
+import thunk from "redux-thunk";
 
 export type StoreType = {
     _state: StateType
@@ -37,11 +50,12 @@ export type HeaderType= {
     auth: AuthType
 }
 export type AuthType = {
-    userId: number | null
-    email: string | null
+    id: number | null
     login: string | null
-    isAuth: boolean
+    email: string | null
     isFetching?: boolean
+    isAuth: boolean
+
 }
 export type MessagesPageType = {
     messages: MessagesType[]
@@ -57,11 +71,11 @@ export type UsersPageType = {
     totalUserCount: number
     currentPage: number
     isFetching: boolean
-    followingInProgress: Array<string>
+    followingInProgress: Array<number>
 }
 export type UserType = {
     name: string
-    id: string
+    id: number
     uniqueUrlName: string
     photos: { small: string, large: string }
     status: string
@@ -69,23 +83,25 @@ export type UserType = {
     location: { city: string, country: string }
 }
 
-export type UserProfileType = {
-    aboutMe: string,
+export type UserProfileType = null | {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
     contacts: {
-        facebook: string,
-        website: null | string,
-        vk: string,
-        twitter: string,
-        instagram: string,
-        youtube: null | string,
-        github: string,
-        mainLink: null | string
-    },
-    lookingForAJob: boolean,
-    lookingForAJobDescription: string,
-    fullName: string,
-    userId: number,
-    photos: { small: string, large: string }
+        github: string
+        vk: string
+        facebook: string
+        instagram: string
+        twitter: string
+        website: string
+        youtube: string
+        mainLink: string
+    }
+    photos: {
+        small: string
+        large: string
+    }
 }
 export type PostsProps = {
     id: string
@@ -106,6 +122,20 @@ export type FriendsType = {
     name: string
     ava: string
 }
+export type ActionsType =
+    | ReturnType<typeof setAuthUserDataAC>
+    |ReturnType<typeof  sendMessageAC >
+    | ReturnType<typeof   addPostAC >
+    | ReturnType<typeof  getUserProfileAC>
+    | ReturnType<typeof setStatusAC >
+    | ReturnType<typeof  deletePostAC>
+| ReturnType<typeof followSuccessAC>
+| ReturnType<typeof unfollowSuccessAC>
+| ReturnType<typeof setUsersAC>
+| ReturnType<typeof setCurrentPageAC>
+| ReturnType<typeof setTotalUserCountsAC>
+| ReturnType<typeof setToggleIsFetchAC>
+| ReturnType<typeof statusFollowingAC>
 
 //-------------------------------------------------------------------------
 let reducer = combineReducers({
@@ -115,15 +145,15 @@ let reducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
-    dialog: formReducer,
-
 })
 
-export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
+// export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
+export const store = createStore(reducer, applyMiddleware(thunk))
 
 // @ts-ignore
 window.store = store
 
 export type AppStateType = ReturnType<typeof reducer>
+export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, ActionsType | FormAction >
 
 

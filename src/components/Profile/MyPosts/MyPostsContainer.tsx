@@ -33,9 +33,6 @@ let mapDispatchToProps = (dispatch: Dispatch<RootActionsType>): MapDispatchToPro
             dispatch(addPostAC(newPostText))
         },
         deletePost: (id) => dispatch(deletePostAC(id))
-       /* updateNewPostText: (text: string) => {
-            dispatch(updateNewPostTextAC(text))
-        }*/
     }
 }
 

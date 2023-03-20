@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {formRegDataType} from "../components/Login/LoginForm";
 
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -9,30 +10,45 @@ const instance = axios.create({
 })
 
 export const userAPI = {
-    getUsers(currentPage: number, pageSize: number) {
+    getUsers(currentPage: number = 1, pageSize: number = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(res => res.data)
     },
-    followOnUser(userId: string) {
-        return instance.post(`follow/${userId}`)
+    followOnUser(id: number) {
+        return instance.post(`follow/${id}`)
+            .then(res => res.data)
     },
-    unfollowOnUser(userId: string) {
-        return instance.delete(`follow/${userId}`)
+    unfollowOnUser(id: number) {
+        return instance.delete(`follow/${id}`)
+            .then(res => res.data)
     },
 }
 export const authAPI = {
     me() {
         return instance.get(`auth/me`)
+            .then(res => res.data)
     },
+    login(regData: formRegDataType) {
+        return instance.post('auth/login', regData)
+            .then(res => res.data)
+    },
+    logout() {
+        return instance.delete('auth/login')
+            .then(res => res.data)
+    }
 }
 export const profileAPI = {
-    getProfile(userId: string) {
+    getProfile(userId: number | null) {
         return instance.get(`profile/${userId}`)
+            .then(res => res.data)
     },
-    getStatus(userId: string) {
+    getStatus(userId: number | null) {
         return instance.get(`profile/status/${userId}`)
+            .then(res => res.data)
     },
     updateStatus(status: string) {
         return instance.put(`profile/status`, {status: status})
+            .then(res => res.data)
     },
 }
 

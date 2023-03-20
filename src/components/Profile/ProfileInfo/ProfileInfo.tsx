@@ -1,11 +1,16 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import {UsersProfilePropsType} from '../ProfileContainer';
 import {Preloader} from '../../common/Preloader/Preloader';
 import {ProfileStatus} from './ProfileStatus';
 import defaultAva from '../../../img/defaultAva.svg'
+import {UserProfileType} from "../../../redux/redux-store";
 
-export const ProfileInfo = (props: UsersProfilePropsType) => {
+type ProfileInfoPropsType = {
+    profile: UserProfileType
+    updateStatus: (status: string) => void
+    status: string
+}
+export const ProfileInfo = (props: ProfileInfoPropsType) => {
     const {profile,status, updateStatus } = props
 
     if (!profile) {
@@ -20,7 +25,7 @@ export const ProfileInfo = (props: UsersProfilePropsType) => {
 
                 <div className={s.name}>
                     {profile.fullName}
-                    <div className={s.aboutMe}>About me: {profile.aboutMe} </div>
+                    <div className={s.aboutMe}>LookingForAJob: {profile.lookingForAJob} </div>
 
                     <ProfileStatus status={status} updateStatus={updateStatus}/>
                 </div>

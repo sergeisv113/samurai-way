@@ -1,7 +1,7 @@
 import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validator";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React from "react";
-import {Textarea} from "../../common/FormsControls/FormsControls";
+import {FormsControls} from "../../common/FormsControls/FormsControls";
 
 export type newMessageTextPropsType = {
     newMessageText: string
@@ -22,7 +22,7 @@ return (
             <div>
                 <Field placeholder={'Enter your message'}
                        name={'newMessageText'}
-                       component={Textarea}
+                       component={FormsControls}
                        validate={[required, minLength2, maxLength100]}
                        typeofform={"textarea"}/>
             </div>

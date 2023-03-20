@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
-import {HeaderPropsType} from './HeaderContainer';
 import logo from '../../img/logo.svg'
 
-export const Header:React.FC<HeaderPropsType> = ({isAuth,login}) => {
+type PropsType = {
+    children?: ReactNode
+    isAuth: boolean
+    login: string | null
+    logout: () => void
+}
+export const Header = (props: PropsType) => {
     return (
         <div className={s.header}>
             <header >
                        <img src={logo} alt="logo"/>
                    <div className={s.loginBlock}>
-                       {isAuth ? login : <NavLink to={'/login'}>Login</NavLink>}
+                       {props.isAuth
+                           ? <>{props.login}<button onClick={props.logout}>logout</button></>
+                           : <NavLink to={'/login'}>login</NavLink>}
                </div>
             </header>
         </div>
