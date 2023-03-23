@@ -3,7 +3,7 @@ import { ReactComponent as LocationIcon } from './../assets/icon-location.svg';
 import { ReactComponent as TwitterIcon} from './../assets/icon-twitter.svg';
 import { ReactComponent as BlogIcon} from './../assets/icon-website.svg';
 
-import { LocalGithubUser } from '../../../Types/userGit';
+import { LocalGithubUser } from '../../../types/userGit';
 import s from './UserInfo.module.scss';
 import {InfoItem, InfoItemProps} from "../InfoItem/InfoItem";
 

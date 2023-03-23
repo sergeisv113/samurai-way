@@ -20,6 +20,7 @@ import {authReducer, setAuthUserDataAC, UniversalTypeForAuthType} from './auth-r
 import thunkMiddleware, {ThunkAction} from 'redux-thunk'
 import {FormAction, reducer as formReducer} from "redux-form";
 import thunk from "redux-thunk";
+import {appReducer, initializedSuccessAC} from "./app-reducer";
 
 export type StoreType = {
     _state: StateType
@@ -136,6 +137,8 @@ export type ActionsType =
 | ReturnType<typeof setTotalUserCountsAC>
 | ReturnType<typeof setToggleIsFetchAC>
 | ReturnType<typeof statusFollowingAC>
+| ReturnType<typeof initializedSuccessAC>
+
 
 //-------------------------------------------------------------------------
 let reducer = combineReducers({
@@ -145,6 +148,7 @@ let reducer = combineReducers({
     usersPage: usersReducer,
     auth: authReducer,
     form: formReducer,
+    app: appReducer,
 })
 
 // export const store = createStore(reducer, applyMiddleware(thunkMiddleware))

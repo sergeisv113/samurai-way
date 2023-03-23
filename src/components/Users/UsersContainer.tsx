@@ -5,7 +5,13 @@ import {Users} from './Users';
 import {Preloader} from '../common/Preloader/Preloader';
 import {withAuthRedirect} from '../../hok/withAuthRedirect';
 import {compose} from 'redux';
-import {forPageChangedTC, getUserTC, onFollowUserTC, onUnfollowUserTC} from "../../redux/users-reducer";
+import {
+    forPageChangedTC,
+    getUserTC,
+    onFollowUserTC,
+    onUnfollowUserTC,
+    setCurrentPageAC
+} from "../../redux/users-reducer";
 
 
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
@@ -21,7 +27,7 @@ type MapDispatchPropsType = {
     getUser: (currentPage: number, pageSize: number) => void
     onFollowUser: (id: number) => void
     onUnfollowUser: (id: number) => void
-    forPageChanged: (currentPage: number, pageSize: number) => void
+    forPageChanged: (currentPage: number) => void
 }
 
 // Server Call ------------------
@@ -29,19 +35,10 @@ class UsersContainer extends React.Component<UsersPropsType> {
 
     componentDidMount() {
          this.props.getUser(this.props.currentPage, this.props.pageSize)
-        //this.props.getUserTC()
     }
-
-   /* onFollowHandler = (userId: string) => {
-        this.props.onFollowUser(id)
-    }
-
-    onUnfollowHandler = (userId: string) => {
-        this.props.onUnfollowUser(id)
-
-    }*/
     onChangedPageHandler = (currentPage: number) => {
-        this.props.forPageChanged(currentPage, this.props.pageSize)
+        this.props.getUser(currentPage, this.props.pageSize)
+        this.props.forPageChanged(currentPage)
     }
 
     render() {
@@ -93,7 +90,7 @@ const mapDispatchToProps: MapDispatchPropsType = {
     getUser: getUserTC,
     onUnfollowUser: onUnfollowUserTC,
     onFollowUser: onFollowUserTC,
-    forPageChanged: forPageChangedTC,
+    forPageChanged: setCurrentPageAC,
 }
 
 //HOK for UsersAPIComponent and next for Users(presentation component) ----------------------------------------------

@@ -2,6 +2,7 @@ import {maxLengthCreator, minLengthCreator, required} from "../../utils/validato
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React from "react";
 import {FormsControls} from "../common/FormsControls/FormsControls";
+import s from '../common/FormsControls/FormsControls.module.css'
 
 let minLength2 = minLengthCreator(2)
 let  maxLength30 = maxLengthCreator(30)
@@ -41,6 +42,7 @@ export const LoginForm =  reduxForm<formRegDataType>({
                            name={'rememberMe'}
                            type={'checkbox'}/> remember me
                 </div>
+                {props.error && <div className={s.formSummaryError}>{props.error}</div>}
                 <div>
                     <button>Login</button>
                 </div>

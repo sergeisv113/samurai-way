@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import { RouteComponentProps, withRouter} from 'react-router-dom';
 import {compose} from 'redux';
 import {getProfileTC, getStatusTC, updateStatusTC} from "../../redux/profile-reducer";
-import {withAuthRedirect} from "../../hok/withAuthRedirect";
 
 
 export type UsersProfilePropsType = MapStatePropsType & MapDispatchPropsType
@@ -29,9 +28,11 @@ type PropsType = RouteComponentProps<PathParamType> & UsersProfilePropsType
 
 class ProfileContainer extends React.Component <PropsType> {
     componentDidMount() {
-        let userId = +this.props.match.params.userId || this.props.meId || 26360
+        let userId = +this.props.match.params.userId || this.props.meId
+        if (userId) {
             this.props.getProfile(userId)
             this.props.getStatus(userId)
+        }
     }
 
     render() {

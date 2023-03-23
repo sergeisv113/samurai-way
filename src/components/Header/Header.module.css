@@ -13,6 +13,9 @@
     border-radius: 10px;
     padding-left: 30px;
 }
+.avatarHeader  img{
+    width: 50px;
+}
 
 .loginBlock {
     float: right;

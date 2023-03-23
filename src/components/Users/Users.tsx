@@ -37,7 +37,7 @@ export const Users = (props: UsersPropsType) => {
             <div>
                 {slicedPages.map((el, index) => {
                     return (
-                        <span key={index} onClick={() => forPageChanged(el, pageSize)}
+                        <span key={index} onClick={() => forPageChanged(el)}
                               className={currentPage === el ? s.selectedPage : s.spanForPage}>
                                 {el}
                             </span>

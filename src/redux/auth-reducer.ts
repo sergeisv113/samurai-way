@@ -32,8 +32,8 @@ export type UniversalTypeForAuthType =
 export const setAuthUserDataAC = (id: number | null, login: string | null, email: string | null, isAuth: boolean) => ({type: SET_USER_DATA,
         payload: {id, login, email, isAuth}} as const)
 
-export const getAuthUserDataTC = (): AppThunkType => (dispatch) => {
-        authAPI.me()
+export const getAuthUserDataTC = (): AppThunkType<Promise<any>> => (dispatch) => {
+     return   authAPI.me()
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data
@@ -49,8 +49,8 @@ export const loginTC = (formData: formRegDataType): AppThunkType => (dispatch) =
                     dispatch(getAuthUserDataTC())
                 } else {
                     dispatch(stopSubmit('login', {
-                        email: data.messages.length>0 ? data.messages[0] : "Error",
-                        password: data.messages.length>0 ? data.messages[0] : "Error"
+                        email: data.messages.length > 0 ? data.messages[0] : "Error",
+                        password: data.messages.length > 0 ? data.messages[0] : "Error"
                     },))
                 }
             })
