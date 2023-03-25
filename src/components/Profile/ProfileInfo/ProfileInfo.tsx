@@ -4,6 +4,7 @@ import {Preloader} from '../../common/Preloader/Preloader';
 import {ProfileStatus} from './ProfileStatus';
 import defaultAva from '../../../img/defaultAva.svg'
 import {UserProfileType} from "../../../redux/redux-store";
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
@@ -27,7 +28,9 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                     {profile.fullName}
                     <div className={s.aboutMe}>LookingForAJob: {profile.lookingForAJob} </div>
 
-                    <ProfileStatus status={status} updateStatus={updateStatus}/>
+                    {/*<ProfileStatus status={status} updateStatus={updateStatus}/>*/}
+                       <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+
                 </div>
 
                 <div className={s.contacts}>

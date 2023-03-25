@@ -1,4 +1,5 @@
-import {AppStateType} from "./redux-store";
+import {AppStateType, UserType} from "./redux-store";
+import {createSelector} from "reselect";
 
 export const getUsers = (state: AppStateType) => {
     return state.usersPage.users
@@ -18,3 +19,17 @@ export const getIsFetching = (state: AppStateType) => {
 export const getFollowingInProgress = (state: AppStateType) => {
     return state.usersPage.followingInProgress
 }
+
+/*export const getUsersSuper = (state: AppStateType) => {
+    return getUsers(state).filter(u => true)
+}
+export const getUsersSuperSelector = createSelector((state: AppStateType) => {
+    return state.usersPage.users.filter(u => true)
+})*/
+/*export const getUsersSuperSelector = createSelector(getUsers, getIsFetching, (users:  UserType[]) => {
+     return  users.filter(u => true)// cache data
+})*/
+/*
+export const getUsersSuperSelector = createSelector(getUsers, getIsFetching, (users:  UserType[], isFetching: boolean) => {
+    return  users.filter(u => true)// cache data
+})*/
