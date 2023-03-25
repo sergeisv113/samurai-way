@@ -89,6 +89,8 @@ export const statusFollowingAC = (id: number, isFetching: boolean) => ({type: TO
 // ThunkCreators -------
 export const getUserTC = (currentPage: number, pageSize: number): AppThunkType =>  (dispatch) => {
         dispatch(setToggleIsFetchAC(true))
+        dispatch(setCurrentPageAC(currentPage))
+
         userAPI.getUsers(currentPage, pageSize)
             .then((data) => {
                 dispatch(setToggleIsFetchAC(false))
