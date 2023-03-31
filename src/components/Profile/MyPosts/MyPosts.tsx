@@ -1,19 +1,20 @@
-import React, {ChangeEvent, useRef} from 'react';
+import React from 'react';
 import s from './MyPosts.module.css'
 import {Post} from './Post/Post';
 import {MyPostsType} from './MyPostsContainer';
-import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validator";
+
 import {AddNewPostForm} from "./NewPostForm";
 
 
-export const MyPosts = (props: MyPostsType) => {
+export const MyPosts = React.memo((props: MyPostsType) => {
 
     // const state = props.profilePage
 
-    const postsElement = props.posts.map((e) => {
+    const postsElement = [...props.posts]//immutability
+        .reverse()
+        .map((e) => {
         return (
-            <Post key={e.id} message={e.message} counterLike={e.counterLike}/>
+            <Post key={e.id} message={e.message} counterLike={e.counterLike} id={e.id}/>
         )
     })
 
@@ -50,4 +51,4 @@ export const MyPosts = (props: MyPostsType) => {
 
         </div>
     );
-}
+})

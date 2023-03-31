@@ -25,10 +25,17 @@ export const appReducer = (state = initialState, action: ActionType): initialSta
 //AC
 export const initializedSuccessAC = () => ({type: INITUSER_SUCCESS} as const)
 //thunk
-export const initializeTC = (): AppThunkType => (dispatch) => {
+/*export const initializeTC = (): AppThunkType => (dispatch) => {
     dispatch(getAuthUserDataTC())//poluch init data
         .then(() => {
         dispatch(initializedSuccessAC())
     })
+}*/
+export const initializeTC = (): AppThunkType => (dispatch) => {
+    let promise = dispatch(getAuthUserDataTC())//poluch init data
+        Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccessAC())
+        })
 }
 

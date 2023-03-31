@@ -19,7 +19,7 @@ type MapDispatchToPropsType = {
     // updateNewPostText: (text: string) => void
  }
 
-// ---------------------------------------------------------------------------------------
+// ------------
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {

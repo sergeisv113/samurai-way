@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 type ProfileStatusProps = {
     status: string
@@ -45,6 +45,10 @@ export const ProfileStatusWithHooks = (props: ProfileStatusProps) => {
  const [editMode, setEditMode] = useState(false);
  const [status, setStatus] = useState(props.status);
 
+ useEffect(() => {
+     setStatus(props.status)
+ }, [props.status])
+
  const activateEditeMode = () => setEditMode(true)
  const deactivateEditeMode = () => setEditMode(false)
  let onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +63,7 @@ export const ProfileStatusWithHooks = (props: ProfileStatusProps) => {
                         <span onDoubleClick={activateEditeMode}>{props.status || 'NO STATUS'}</span>
                     </div>
                 }
-                {editMode &&
+                { editMode &&
                     <div>
                         <input autoFocus={true} onBlur={deactivateEditeMode} value={status} onChange={onStatusChange}/>
                     </div>

@@ -32,9 +32,9 @@ type MapStatePropsType = {
 }
 type MapDispatchPropsType = {
     getUser: (currentPage: number, pageSize: number) => void
+    setCurrentPage: (pageNumber: number) => void
     onFollowUser: (id: number) => void
     onUnfollowUser: (id: number) => void
-    forPageChanged: (currentPage: number) => void
 }
 
 // Server Call ------------------
@@ -43,9 +43,9 @@ class UsersContainer extends React.Component<UsersPropsType> {
     componentDidMount() {
          this.props.getUser(this.props.currentPage, this.props.pageSize)
     }
-    onChangedPageHandler = (currentPage: number) => {
-        this.props.getUser(currentPage, this.props.pageSize)
-        this.props.forPageChanged(currentPage)
+    onChangedPageHandler = (pageNumber: number) => {
+        this.props.getUser(pageNumber, this.props.pageSize)
+        this.props.setCurrentPage(pageNumber)
     }
 
     render() {
@@ -59,7 +59,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
             getUser,
             onUnfollowUser,
             onFollowUser,
-            forPageChanged,
+            setCurrentPage,
         } = this.props
 
         return <>
@@ -74,7 +74,7 @@ class UsersContainer extends React.Component<UsersPropsType> {
                     getUser={getUser}
                     onUnfollowUser={onUnfollowUser}
                     onFollowUser={onFollowUser}
-                    forPageChanged={forPageChanged}
+                    setCurrentPage={setCurrentPage}
                 />
         </>
     }
@@ -107,7 +107,7 @@ const mapDispatchToProps: MapDispatchPropsType = {
     getUser: getUserTC,
     onUnfollowUser: onUnfollowUserTC,
     onFollowUser: onFollowUserTC,
-    forPageChanged: setCurrentPageAC,
+    setCurrentPage: setCurrentPageAC,
 }
 
 //HOK for UsersAPIComponent and next for Users(presentation component) ----------------------------------------------

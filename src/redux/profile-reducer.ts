@@ -61,23 +61,38 @@ export const getUserProfileAC = (profile: UserProfileType) =>({type: SET_USER_PR
 export const setStatusAC = (status: string) =>({type: SET_STATUS, status} as const)
 export const deletePostAC = (id: string) => ({type: 'DELETE_POST', id} as const)
 
-export const getProfileTC = (userId: number): AppThunkType => (dispatch) => {
+/*export const getProfileTC = (userId: number): AppThunkType => (dispatch) => {
         profileAPI.getProfile(userId)
             .then(data => dispatch(getUserProfileAC(data))
             )
-    }
+    }*/
 
-export const getStatusTC = (userId: number): AppThunkType => (dispatch) => {
+export const getProfileTC = (userId: number): AppThunkType => async (dispatch) => {
+   let data = await profileAPI.getProfile(userId)
+         dispatch(getUserProfileAC(data))
+}
+
+/*export const getStatusTC = (userId: number): AppThunkType => (dispatch) => {
         profileAPI.getStatus(userId)
             .then(data => dispatch(setStatusAC(data))
             )
-    }
+    }*/
+export const getStatusTC = (userId: number): AppThunkType => async (dispatch) => {
+   let data = await profileAPI.getStatus(userId)
+       dispatch(setStatusAC(data))
+}
 
-export const updateStatusTC = (status: string): AppThunkType => (dispatch) => {
+/*export const updateStatusTC = (status: string): AppThunkType => (dispatch) => {
         profileAPI.updateStatus(status)
             .then(data => {
                 if (data.resultCode === 0) {
                     dispatch(setStatusAC(status))
                 }
             })
-    }
+    }*/
+export const updateStatusTC = (status: string): AppThunkType => async (dispatch) => {
+  let data = await  profileAPI.updateStatus(status)
+            if (data.resultCode === 0) {
+                dispatch(setStatusAC(status))
+            }
+}
