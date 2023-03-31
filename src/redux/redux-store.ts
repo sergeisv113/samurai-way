@@ -1,5 +1,5 @@
 
-import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, compose, legacy_createStore} from 'redux';
 import {
     addPostAC, deletePostAC,
     getUserProfileAC,
@@ -141,7 +141,7 @@ export type ActionsType =
 
 
 //-------------------------------------------------------------------------
-let reducer = combineReducers({
+let rootReducer = combineReducers({
     profilePage: profileReducer,
     messagesPage: dialogsReducer,
     sidebar: sidebarReducer,
@@ -150,14 +150,19 @@ let reducer = combineReducers({
     form: formReducer,
     app: appReducer,
 })
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
-export const store = createStore(reducer, applyMiddleware(thunk))
+export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 // @ts-ignore
-window.store = store
+window.__store__ = store
 
-export type AppStateType = ReturnType<typeof reducer>
+export type AppStateType = ReturnType<typeof rootReducer>
 export type AppThunkType<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, ActionsType | FormAction >
 
 
