@@ -55,6 +55,6 @@ test('after deleting length of messages should be decrement', ()=> {
 test('correct status be set', ()=> {
     let action = setStatusAC('Test')
     const endState = profileReducer(state, action)
-    expect(endState.status).toBe('Test')
+    expect(endState.status).toBe('Test' )
 })
 

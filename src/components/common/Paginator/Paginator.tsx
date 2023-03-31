@@ -22,6 +22,7 @@ export const Paginator = (props: PaginatorType) => {
         pages.push(i);
     }
 
+
     return(
         <div className={s.selectedPageBlock}>
                 {pages.map((p, index) => {

@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {store} from './redux/redux-store';
 import {Provider} from 'react-redux';
-import App from "./App";
+import  SamApp from "./App";
 
 
 
 ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
+ /*   <Provider store={store}>
+        <AppContainer/>
+    </Provider>,*/
+    <SamApp/>,
     document.getElementById('root')
 )
 

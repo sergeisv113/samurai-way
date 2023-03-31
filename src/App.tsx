@@ -11,8 +11,8 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from "./components/Login/Login";
 import AvaContainer from "./components/Ava/AvaContainer";
-import {AppStateType} from "./redux/redux-store";
-import {connect} from "react-redux";
+import {AppStateType, store} from "./redux/redux-store";
+import {connect, Provider} from "react-redux";
 import {initializeTC} from "./redux/app-reducer";
 import {Preloader} from "./components/common/Preloader/Preloader";
 
@@ -59,11 +59,18 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
         initialized: state.app.initialized
     }
 }
-export default
-    connect(mapStateToProps, {initializeTC})(App);
+/*export default
+    connect(mapStateToProps, {initializeTC})(App);*/
+let AppContainer  = connect(mapStateToProps, {initializeTC})(App);
 
-
-
+ let SamApp = () => {
+  return  <BrowserRouter>
+      <Provider store={store}>
+          <AppContainer/>
+      </Provider>,
+  </BrowserRouter>
+}
+export default SamApp
 
 
 
