@@ -1,0 +1,49 @@
+.img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 2px solid black;
+}
+
+.spanForPage {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.userBlock {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px ;
+    margin-left: 10px;
+    gap: 5px;
+}
+
+.urlName a{
+    text-decoration: solid;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.line {
+    display: flex;
+    align-items: end;
+    gap: 3px;
+}
+
+.buttonFollowed {
+    background-color: orange;
+    border: 3px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+.buttonUnfollowed {
+    background-color: #f1cb7f;
+    border: 3px solid black;
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+

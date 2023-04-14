@@ -1,0 +1,11 @@
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.appWrapperContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
