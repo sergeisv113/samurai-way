@@ -38,7 +38,8 @@ export const Search = ({ hasError, onSubmit }: SearchProps) => {
           name="username"
           placeholder="Search friend"
             // @ts-ignore
-          autoComplete="off" readOnly onFocus="this.removeAttribute('readonly')"
+          autoComplete="off"
+//          readOnly onFocus={"this.removeAttribute('readonly')"}
         />
         {hasError && (
           <div className={s.error}>

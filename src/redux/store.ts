@@ -51,7 +51,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     form: formReducer,
     app: appReducer,
-    sidebar: sidebarReducer
+    sidebar: sidebarReducer,
 })
 
 // for Profiler ext
