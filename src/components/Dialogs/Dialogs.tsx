@@ -11,7 +11,8 @@ import {AddMessageFormPropsType} from "./AddMessageForm";
 export const Dialogs = ({dialogsPage, sendMessage, name}: DialogsPropsType) => {
 
     let dialogsElements =  dialogsPage.dialogs
-        .map(dialog => <DialogItem name={dialog.name} key={dialog.id}/>)
+        .map(dialog => <DialogItem name={dialog.name}
+                                   key={dialog.id}/>)
 
     let messagesElements = dialogsPage.messages
         .map(message => <Messages text={message.text} id={message.id} key={message.id}/>)
@@ -21,16 +22,18 @@ export const Dialogs = ({dialogsPage, sendMessage, name}: DialogsPropsType) => {
     }
     return <div className={s.dialogContainer}>
         <Separator title={'Messages'}/>
-        <div className={s.dialogBlock}>
-            <div className={s.dialogItems}>
-                {dialogsElements}
+        <div className={s.dialogs}>
+            <div className={s.dialogBlock}>
+                <div className={s.dia}>
+                    {dialogsElements}
+                </div>
+                <div className={s.messages}>
+                    {messagesElements}
+                </div>
             </div>
-            <div className={s.messages}>
-                {messagesElements}
+            <div className={s.addMessage}>
+                <AddMessageForm onSubmit={addNewMessage}/>
             </div>
-        </div>
-        <div className={s.addMessage}>
-            <AddMessageForm onSubmit={addNewMessage}/>
         </div>
     </div>
 }

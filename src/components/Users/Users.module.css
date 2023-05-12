@@ -1,10 +1,21 @@
+.users {
+    display: flex;
+    flex-direction: column;
+}
+.usersSearch {
+    padding: 10px;
+}
 .img {
     width: 60px;
     height: 60px;
     border-radius: 30px;
     border: 2px solid black;
+    padding: 5px;
 }
-
+.usersPaginator {
+    display: flex;
+    justify-content: center;
+}
 .spanForPage {
     cursor: pointer;
     padding: 5px;
@@ -12,8 +23,9 @@
 
 .userBlock {
     display: flex;
-    flex-direction: column;
-    margin-top: 15px ;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 70px ;
     margin-left: 10px;
     gap: 5px;
 }
@@ -46,4 +58,11 @@
     font-size: 15px;
     cursor: pointer;
 }
-
+button {
+    background-color: #1677ff;
+    box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
+    font-size: 14px;
+    height: 26px;
+    padding: 4px 15px;
+    border-radius: 6px;
+}

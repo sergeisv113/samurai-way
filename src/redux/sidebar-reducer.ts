@@ -1,5 +1,4 @@
 
-import {v1} from 'uuid';
 import friend1 from '../img/friend1.svg'
 import friend2 from '../img/friend2.svg'
 import friend3 from '../img/friend3.svg'

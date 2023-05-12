@@ -6,7 +6,7 @@ type PropsType = {
 export const Separator = ({title}: PropsType) => {
   return (
     <div className={s.separator}>
-      <div style={{marginLeft: '50px'}}>{title}</div>
+      <div>{title}</div>
     </div>
   )
 }

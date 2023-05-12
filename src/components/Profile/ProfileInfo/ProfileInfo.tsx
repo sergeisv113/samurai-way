@@ -7,6 +7,7 @@ import {UserProfileType} from "../../../redux/profile-reducer";
 import {ProfileStatus} from "./ProfileStatus/ProfileStatus";
 import {FormProfileDataType, ProfileDataForm} from "./ProfileData/ProfileDataForm";
 import {ProfileData} from "./ProfileData/ProfileData";
+import {Button} from "antd";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType

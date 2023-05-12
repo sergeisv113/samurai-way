@@ -5,6 +5,7 @@ import {Redirect} from "react-router-dom";
 import {UserProfileType} from "../../redux/profile-reducer";
 import {Separator} from "../common/Separator/Separator";
 import {FormProfileDataType} from "./ProfileInfo/ProfileData/ProfileDataForm";
+import s from './Profile.module.css'
 
 type PropsType = {
     profile: UserProfileType
@@ -23,15 +24,19 @@ export const Profile = ({profile, status, updateStatusTC, isAuth, isOwner, saveP
                ? <Redirect to={"/login"}/>
                : <>
                    <Separator title={'Profile'}/>
-                   <div>
-                       <ProfileInfo  profile={profile}
-                                     updateStatusTC={updateStatusTC}
-                                     status={status}
-                                     isOwner={isOwner}
-                                     savePhotoTC={savePhotoTC}
-                                     updateProfileTC={updateProfileTC}
-                       />
-                       {isOwner && <MyPostsContainer/>}
+                   <div className={s.profileContent}>
+                       <div className={s.profileInfo}>
+                           <ProfileInfo  profile={profile}
+                                         updateStatusTC={updateStatusTC}
+                                         status={status}
+                                         isOwner={isOwner}
+                                         savePhotoTC={savePhotoTC}
+                                         updateProfileTC={updateProfileTC}
+                           />
+                       </div>
+                      <div className={s.myPost}>
+                          {isOwner && <MyPostsContainer/>}
+                      </div>
                    </div>
                </>
     );

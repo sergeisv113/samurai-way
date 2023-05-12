@@ -8,7 +8,7 @@ import {NavLink} from 'react-router-dom';
 
 export const DialogItem = ({name}: DialogItemType) => {
 
-    return <div>
+    return <div className={s.dialogItems}>
         <NavLink to={"/dialogs/" + name}>{name}</NavLink>
     </div>
 }

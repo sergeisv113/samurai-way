@@ -2,6 +2,7 @@ import {maxLengthCreator, minLengthCreator, required} from "../../../utils/valid
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React, {FormEvent} from "react";
 import {FormControl} from "../../common/FormsControls/FormControl";
+import { Button } from "antd";
 
 export type newMessageTextPropsType = {
     newMessageText: string
@@ -19,6 +20,7 @@ export const AddMessageForm = reduxForm<newMessageTextPropsType>({
             reset()
             // @ts-ignore
             handleSubmit()
+            reset()
         }
 
 
@@ -33,7 +35,7 @@ return (
                        typeofform={"textarea"}/>
             </div>
             <div>
-                <button>send message</button>
+                <button >send message</button>
             </div>
         </form>
     </>

@@ -2,6 +2,7 @@ import {UserProfileType} from "redux/profile-reducer";
 import s from "../ProfileInfo.module.css";
 import {Contact} from "./Contact/Contact";
 import React from "react";
+import {Button} from "antd";
 
 type PropsType = {
   profile: UserProfileType
@@ -20,7 +21,7 @@ export const ProfileData = ({profile, isOwner, goToEditMode}: PropsType) => {
               .map((key, i) => <Contact key={i} title={key} value={profile.contacts[key]}/>)}</div>
       </div>
     {isOwner && <div>
-        <button className={s.button} onClick={goToEditMode}>edit data</button>
+        <button  className={s.button} onClick={goToEditMode}>edit data</button>
     </div>}
   </div>
 }

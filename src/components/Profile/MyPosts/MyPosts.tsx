@@ -28,7 +28,7 @@ export const MyPosts = ({posts, deletePost, addPost, profile}: MyPostsType) => {
 
     return (
         <div className={s.postBlock}>
-            <h3>My posts</h3>
+            <h2>My posts</h2>
             <NewPostForm onSubmit={addNewPost}/>
             <div className={s.posts}>
                 {postsElements}

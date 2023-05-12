@@ -1,7 +1,9 @@
 import {ActionsType, AppThunkType} from "./store";
-import {authAPI, securityAPI} from "api/api";
+import { ResultCodeEnum, ResultCodeForCaptchaEnum,} from "api/api";
 import {formRegDataType} from "components/Login/LoginForm";
 import {stopSubmit} from "redux-form";
+import {authAPI} from "../api/auth-api";
+import {securityAPI} from "../api/security-api";
 
 const initialState: AuthStateType = {
     id: null,
@@ -34,18 +36,18 @@ export const getCaptchaUrlSuccessAC = (captchaUrl: string | null) => ({
 // thunks
 export const getAuthUserDataTC = (): AppThunkType<Promise<any>> => async (dispatch) => {
     const data = await authAPI.me()
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         const {id, login, email} = data.data
         dispatch(setAuthUserDataAC(id, login, email, true))
     }
 }
 export const loginTC = (formData: formRegDataType): AppThunkType => async (dispatch) => {
     const data = await authAPI.login(formData)
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         await dispatch(getAuthUserDataTC())
         dispatch(getCaptchaUrlSuccessAC(null))
     } else {
-        if (data.resultCode === 10) {
+        if (data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
             dispatch(getCaptchaUrlTC())
         }
         dispatch(stopSubmit('login', {
@@ -56,7 +58,7 @@ export const loginTC = (formData: formRegDataType): AppThunkType => async (dispa
 }
 export const logoutTC = (): AppThunkType => async (dispatch) => {
     const data = await authAPI.logout()
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCodeEnum.Success) {
         dispatch(setAuthUserDataAC(null, null, null, false))
     }
 }
@@ -67,7 +69,6 @@ export const getCaptchaUrlTC = (): AppThunkType => async (dispatch) => {
 }
 
 // types
-export type setAuthUserDataActionType = ReturnType<typeof setAuthUserDataAC>
 export type AuthStateType = {
     id: number | null
     login: string | null

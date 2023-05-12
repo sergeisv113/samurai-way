@@ -24,14 +24,6 @@ export const Paginator = ({totalItemsCount, pageSize, onChangedPageHandler, curr
     let rightPositionPageNumber = portionNumber * portionSize
 
     return(
-        /*<div className={s.selectedPageBlock}>
-                {pages.map((p, index) => {
-                     return (
-                        <span key={index}
-                            onClick={(e) => setCurrentPage(p)}
-                              className={classNames({[s.selectedPage] : p === currentPage })}>{p}</span>)
-                })}
-            </div>*/
         <div className={s.paginator}>
             {portionNumber > 0 &&
                 <button onClick={() => {setPortionNumber(portionNumber - 1)}}>PREV</button>}

@@ -38,7 +38,7 @@ export const FriendRender = () =>{
     })
     return (
         <div className={s.item}>
-            <NavLink to='/friends' activeClassName={s.active}> <h2>Friends</h2> </NavLink>
+            <NavLink to='/friends' activeClassName={s.active}> <h2>Friends ONLINE</h2> </NavLink>
             {friendsElement}
         </div>
     );

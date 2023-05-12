@@ -16,16 +16,20 @@ import {FormAction} from "redux-form/lib/actions";
 import {appReducer} from "./app-reducer";
 import {
     followSuccessAC,
-    setCurrentPageAC, setToggleIsFetchAC,
+    setCurrentPageAC, setFilterAC, setToggleIsFetchAC,
     setTotalUsersCountsAC,
     setUsersAC, statusFollowingAC,
     unfollowSuccessAC,
     usersReducer
 } from "./users-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
+import {newsReducer, getCommentsAC} from "./news-reducer";
+import {TypedUseSelectorHook, useSelector} from "react-redux";
 
 export type storeType = typeof store
 export type AppStateType = ReturnType<typeof rootReducer>
+type RootState = ReturnType<typeof rootReducer>
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export type ActionsType =
     | ReturnType<typeof followSuccessAC>
@@ -43,6 +47,8 @@ export type ActionsType =
     | ReturnType<typeof addPostAC>
     | ReturnType<typeof savePhotoSuccessAC>
     | ReturnType<typeof getCaptchaUrlSuccessAC>
+    | ReturnType<typeof setFilterAC>
+    | ReturnType<typeof getCommentsAC>
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
@@ -52,6 +58,7 @@ const rootReducer = combineReducers({
     form: formReducer,
     app: appReducer,
     sidebar: sidebarReducer,
+    news: newsReducer,
 })
 
 // for Profiler ext

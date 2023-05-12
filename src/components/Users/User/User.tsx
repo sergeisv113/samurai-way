@@ -1,41 +1,57 @@
-import React from "react";
-import s from "./User.module.css"
-import style from "../../Profile/ProfileInfo/ProfileInfo.module.css"
-import userAvatar from "../../../assets/images/avatar.png"
-import {NavLink} from "react-router-dom";
-import {userType} from "../UsersContainer";
+import React from 'react';
+import s from '../Users.module.css';
+import defaultAva from '../../../img/defaultAva.svg';
+import {UsersPropsType, userType} from '../UsersContainer';
+import {NavLink} from 'react-router-dom';
+import {Paginator} from "../../common/Paginator/Paginator";
 
-type PropsType = {
-  user: userType
-  followingInProgress: number[]
-  followThunkTC: () => void
-  unfollowThunkTC: () => void
+
+type UserPropsType = {
+    user: userType
+        followingInProgress: Array<number>
+    unfollowTC: (userId: number) => void
+    followTC: (userId: number) => void
 }
-export const User = ({user, unfollowThunkTC, followThunkTC, followingInProgress}: PropsType) => {
-  return <div className={s.userContainer}>
-    <div>
-      <NavLink to={'/profile/' + user.id}>
-        <img className={s.userPhoto} alt={"user photo"}
-             src={user.photos.small ? user.photos.small : userAvatar}/>
-      </NavLink>
-    </div>
-    <div className={s.infoBlock}>
-      <div style={{overflowWrap: 'anywhere'}}>{user.name}</div>
-      <div style={{overflowWrap: 'anywhere'}}>{user.status}</div>
-      <div>{user.location?.country}</div>
-      <div>{user.location?.city}</div>
-    </div>
-    <div> {!user.followed
-      ? <button className={style.button}
-                onClick={() => {
-                  followThunkTC()
-                }}
-                disabled={followingInProgress.some(id => id === user.id)}>follow</button>
-      : <button className={style.button}
-                onClick={() => {
-                  unfollowThunkTC()
-                }}
-                disabled={followingInProgress.some(id => id === user.id)}>unfollow</button>}
-    </div>
-  </div>
-}
+export const User = (props: UserPropsType) => {
+ const {
+     user,
+     followingInProgress,
+     followTC,
+     unfollowTC
+ } = props
+                return (
+                    <div>
+                            <NavLink to={`/profile/` + user.id }>
+                            <img src={user.photos.small !== null ? user.photos.small : defaultAva}
+                                 className={s.img} alt={'ava'}/>
+                            </NavLink>
+
+                        <div className={s.button}>
+                            {user.followed
+                                ? <button disabled={props.followingInProgress.some(id => id === user.id)}
+                                          className={s.buttonUnfollowed}
+                                          onClick={() => unfollowTC(user.id)}>Unfollow</button>
+
+                                : <button disabled={followingInProgress.some(id => id === user.id)}
+                                          className={s.buttonFollowed}
+                                          onClick={() => followTC(user.id)}>Follow</button>
+                            }
+                        </div>
+
+
+                        <span>
+                        <span>
+                           <div className={s.urlName}>
+                               {user.name}
+                           </div>
+                        <div>{user.status}</div>
+                    </span>
+                        <span>
+                        <div>{user.location?.country}</div>
+                        <div>{user.location?.city}</div>
+                    </span>
+                    </span>
+                    </div>)
+
+};
+

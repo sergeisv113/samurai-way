@@ -1,14 +1,13 @@
 import {
     followSuccessAC,
-    InitialStateType,
     setCurrentPageAC,
     setTotalUsersCountsAC,
     setUsersAC, statusFollowingAC, setToggleIsFetchAC,
     unfollowSuccessAC,
-    usersReducer
+    usersReducer, InitialState
 } from "./users-reducer";
 
-let startState: InitialStateType
+let startState: InitialState
 beforeEach(() => {
     startState = {
         users: [
@@ -42,6 +41,10 @@ beforeEach(() => {
         currentPage: 1,
         isFetching: false,
         followingInProgress: [1,],
+        filter: {
+            term: '',
+            friend: null as null | boolean
+        }
     }
 })
 

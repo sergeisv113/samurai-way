@@ -8,19 +8,19 @@
     border-radius: 15px;
 }
 
-.header img {
+/*.header img {
     width: 70px;
     border-radius: 10px;
     padding-left: 30px;
 }
 .avatarHeader  img{
     width: 50px;
-}
+}*/
 
 .loginBlock {
     float: right;
     padding-right: 30px;
-    margin-top: 19px;
+    margin-top: -7px;
     color: #0a0a0a;
     font-size: 25px;
 }

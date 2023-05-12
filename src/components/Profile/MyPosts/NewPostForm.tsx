@@ -1,6 +1,7 @@
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import React, {FormEvent} from "react";
 import {FormControl} from "../../common/FormsControls/FormControl";
+import { Button } from "antd";
 
 export type newPostTextPropsType = {
     newPost: string
