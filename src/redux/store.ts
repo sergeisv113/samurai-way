@@ -7,7 +7,7 @@ import {
     setUserProfileAC,
     setUserStatusAC,
 } from "./profile-reducer";
-import {dialogsReducer, sendMessageAC, } from "./dialogs-reducer";
+import {dialogsReducer, sendMessageAC,} from "./dialogs-reducer";
 
 import {authReducer, getCaptchaUrlSuccessAC, setAuthUserDataAC} from "./auth-reducer";
 import thunk, {ThunkAction} from "redux-thunk";
@@ -61,7 +61,7 @@ const rootReducer = combineReducers({
     news: newsReducer,
 })
 
-// for Profiler ext
+
 declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

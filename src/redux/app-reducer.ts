@@ -19,7 +19,7 @@ export const appReducer = (state = initialState, action: ActionType): initialSta
         case INITIALIZED_SUCCESS:
             return {...state, initialized: action.initialized}
         default:
-         return state
+            return state
     }
 };
 //AC
@@ -27,8 +27,8 @@ export const initializedSuccessAC = (initialized: boolean) => ({type: INITIALIZE
 //thunk
 
 export const initializeTC = (): AppThunkType => (dispatch) => {
-     dispatch(getAuthUserDataTC()).then(() => {
-             dispatch(initializedSuccessAC(true))
-        })
+    dispatch(getAuthUserDataTC()).then(() => {
+        dispatch(initializedSuccessAC(true))
+    })
 }
 

@@ -1,4 +1,4 @@
-import { LocalGithubUser } from '../../../types/userGit'
+import { LocalGithubUser } from '../types/userGit'
 import s from './UserTitle.module.scss';
 
 interface UserTitleProps extends Pick<

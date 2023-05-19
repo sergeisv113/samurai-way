@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {FormProfileDataType} from "../components/Profile";
 import {PhotosType, ProfileType} from "../redux/profile-reducer";
 import {APIResponseType, instance} from "./api";

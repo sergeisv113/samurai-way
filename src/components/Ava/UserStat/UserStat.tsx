@@ -1,4 +1,4 @@
-import { LocalGithubUser } from '../../../types/userGit';
+import { LocalGithubUser } from '../types/userGit';
 import s from './UserStat.module.scss';
 
 export interface UserStatProps extends Pick<

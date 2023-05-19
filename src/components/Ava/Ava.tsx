@@ -2,7 +2,7 @@ import React, {ReactNode, useState} from 'react';
 import s from './Ava.module.scss'
 import {Container} from "./Container/Container";
 import {Search} from "./Search/Search";
-import {GithubError, GithubUser, LocalGithubUser} from "../../types/userGit";
+import {GithubError, GithubUser, LocalGithubUser} from "./types/userGit";
 import {UserCard} from "./UserCard/UserCard";
 import {isGithubUser} from "./utils/typeguards";
 import {extractLocalUser} from "./utils/exract-local-user";

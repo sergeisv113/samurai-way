@@ -22,17 +22,3 @@ export const getFollowingInProgress = (state: AppStateType) => {
 export const getUsersFilter = (state: AppStateType) => {
     return state.usersPage.filter
 }
-
-/*export const getUsersSuper = (state: AppStateType) => {
-    return getUsers(state).filter(u => true)
-}
-export const getUsersSuperSelector = createSelector((state: AppStateType) => {
-    return state.usersPage.users.filter(u => true)
-})*/
-/*export const getUsersSuperSelector = createSelector(getUsers, getIsFetching, (users:  UserType[]) => {
-     return  users.filter(u => true)// cache data
-})*/
-/*
-export const getUsersSuperSelector = createSelector(getUsers, getIsFetching, (users:  UserType[], isFetching: boolean) => {
-    return  users.filter(u => true)// cache data
-})*/

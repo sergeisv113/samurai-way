@@ -1,14 +1,13 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import useSound from "use-sound";
-import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
-import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
-import { IconContext } from "react-icons";
-import s from  './Player.module.css'
+import {AiFillPlayCircle, AiFillPauseCircle} from "react-icons/ai";
+import {BiSkipNext, BiSkipPrevious} from "react-icons/bi";
+import {IconContext} from "react-icons";
+import s from './Player.module.css'
 
 // @ts-ignore
 import qala from '../../assets/gala.mp3'
-
 
 
 export const Player = () => {
@@ -24,7 +23,7 @@ export const Player = () => {
 
     const [seconds, setSeconds] = useState();
 
-    const [play, { pause, duration, sound }] = useSound(qala);
+    const [play, {pause, duration, sound}] = useSound(qala);
 
     useEffect(() => {
         if (duration) {
@@ -66,9 +65,9 @@ export const Player = () => {
     return (
         <div className={s.component}>
             <h2>Playing Now</h2>
-            <img className={s.musicCover} src="https://picsum.photos/200/200" />
+            <img className={s.musicCover} src="https://picsum.photos/200/200"/>
             <div>
-                <h3 className={s.title}>Rubaiyyan</h3>
+                <h3 className={s.title}>Ruba</h3>
                 <p className={s.subTitle}>Qala</p>
             </div>
             <div>
@@ -96,26 +95,26 @@ export const Player = () => {
             </div>
             <div>
                 <button className={s.playButton}>
-                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                        <BiSkipPrevious />
+                    <IconContext.Provider value={{size: "3em", color: "#27AE60"}}>
+                        <BiSkipPrevious/>
                     </IconContext.Provider>
                 </button>
                 {!isPlaying ? (
                     <button className={s.playButton} onClick={playingButton}>
-                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                            <AiFillPlayCircle />
+                        <IconContext.Provider value={{size: "3em", color: "#27AE60"}}>
+                            <AiFillPlayCircle/>
                         </IconContext.Provider>
                     </button>
                 ) : (
                     <button className={s.playButton} onClick={playingButton}>
-                        <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                            <AiFillPauseCircle />
+                        <IconContext.Provider value={{size: "3em", color: "#27AE60"}}>
+                            <AiFillPauseCircle/>
                         </IconContext.Provider>
                     </button>
                 )}
                 <button className={s.playButton}>
-                    <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
-                        <BiSkipNext />
+                    <IconContext.Provider value={{size: "3em", color: "#27AE60"}}>
+                        <BiSkipNext/>
                     </IconContext.Provider>
                 </button>
             </div>

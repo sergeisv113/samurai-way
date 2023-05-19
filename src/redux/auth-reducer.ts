@@ -1,5 +1,5 @@
 import {ActionsType, AppThunkType} from "./store";
-import { ResultCodeEnum, ResultCodeForCaptchaEnum,} from "api/api";
+import {ResultCodeEnum, ResultCodeForCaptchaEnum,} from "api/api";
 import {formRegDataType} from "components/Login/LoginForm";
 import {stopSubmit} from "redux-form";
 import {authAPI} from "../api/auth-api";

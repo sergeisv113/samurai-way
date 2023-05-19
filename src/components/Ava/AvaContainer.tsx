@@ -19,6 +19,7 @@ class AvaContainer extends React.Component<AvaPropsType> {
     componentDidMount() {
         this.props.authMe()
     }
+
     render() {
         return <Ava {...this.props}
         />
@@ -31,7 +32,7 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 const mapDispatchToProps: MapDispatchPropsType = {
-   authMe: getAuthUserDataTC,
+    authMe: getAuthUserDataTC,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AvaContainer)
 

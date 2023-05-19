@@ -1,4 +1,4 @@
-import { LocalGithubUser } from '../../../types/userGit';
+import { LocalGithubUser } from '../types/userGit';
 
 export const defaultUser: LocalGithubUser = {
   "login": "sergeisv113",

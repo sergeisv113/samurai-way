@@ -14,17 +14,7 @@ const TOGGLE_IS_FETCH = 'TOGGLE_FETCH'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 const SET_FILTER = 'SET_FILTER'
 
-/*export type InitialStateType = {
-    users: Array<userType>
-    pageSize: number
-    totalUsersCount: number
-    currentPage: number
-    isFetching: boolean
-    followingInProgress: number []
-    filter: {
-        term: string
-    }
-}*/
+
 export type InitialState = typeof initialState
 export type FilterType = typeof initialState.filter
 const initialState = {
@@ -47,11 +37,11 @@ export const usersReducer = (state = initialState, action: ActionsType): Initial
                 ...state,
                 users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
             }
-            case STATUS_UNFOLLOW:
-                return {
-                    ...state,
-                    users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
-                }
+        case STATUS_UNFOLLOW:
+            return {
+                ...state,
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
+            }
         case SET_USERS:
             return {...state, users: action.users}
         case SET_CURRENT_PAGE:
@@ -62,8 +52,8 @@ export const usersReducer = (state = initialState, action: ActionsType): Initial
             return {...state, isFetching: action.isFetching}
         case TOGGLE_IS_FOLLOWING_PROGRESS :
             return action.followingInProgress
-                    ?  {...state, followingInProgress: [...state.followingInProgress, action.id] }
-                    : {...state, followingInProgress: state.followingInProgress.filter(el => el !== action.id)}
+                ? {...state, followingInProgress: [...state.followingInProgress, action.id]}
+                : {...state, followingInProgress: state.followingInProgress.filter(el => el !== action.id)}
         case SET_FILTER:
             return {...state, filter: action.payload}
         default:
@@ -78,20 +68,24 @@ export const setUsersAC = (users: userType[]) => ({type: SET_USERS, users} as co
 export const setCurrentPageAC = (pageNumber: number) => ({type: SET_CURRENT_PAGE, pageNumber} as const)
 export const setTotalUsersCountsAC = (totalUsersCount: number) => ({type: SET_TOTAL_COUNT, totalUsersCount} as const)
 export const setToggleIsFetchAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCH, isFetching} as const)
-export const statusFollowingAC = (id: number, followingInProgress: boolean) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, id, followingInProgress} as const)
-export const setFilterAC = ( filter: FilterType) => ({type: SET_FILTER, payload: filter} as const)
+export const statusFollowingAC = (id: number, followingInProgress: boolean) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    id,
+    followingInProgress
+} as const)
+export const setFilterAC = (filter: FilterType) => ({type: SET_FILTER, payload: filter} as const)
 
 // ThunkCreators -------
 
-export const getUserTC = (page: number, pageSize: number, filter: FilterType): AppThunkType => async  (dispatch) => {
+export const getUserTC = (page: number, pageSize: number, filter: FilterType): AppThunkType => async (dispatch) => {
     dispatch(setToggleIsFetchAC(true))
-     dispatch(setCurrentPageAC(page))
-     dispatch(setFilterAC(filter))
+    dispatch(setCurrentPageAC(page))
+    dispatch(setFilterAC(filter))
 
-  const data = await  usersAPI.getUsers(page, pageSize, filter.term, filter.friend)
-            dispatch(setToggleIsFetchAC(false))
-            dispatch(setUsersAC(data.items))
-            dispatch(setTotalUsersCountsAC(data.totalCount))
+    const data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend)
+    dispatch(setToggleIsFetchAC(false))
+    dispatch(setUsersAC(data.items))
+    dispatch(setTotalUsersCountsAC(data.totalCount))
 }
 
 /*export const onFollowUserTC = (id: number): AppThunkType => async (dispatch) => {
@@ -120,7 +114,7 @@ const _followUnfollowFlow = async (dispatch: DispatchType,
     if (response.resultCode == ResultCodeEnum.Success) {
         dispatch(actionCreator(userId));
     }
-    dispatch(statusFollowingAC( userId, false));
+    dispatch(statusFollowingAC(userId, false));
 }
 
 export const followTC = (userId: number): AppThunkType => {

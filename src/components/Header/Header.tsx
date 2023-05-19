@@ -1,21 +1,11 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import s from './Header.module.css'
 import {Link, NavLink} from 'react-router-dom';
-import logo from '../../img/logo.svg'
-import {Avatar, Button, Col, Layout, Row} from "antd";
-import {UserOutlined} from "@ant-design/icons";
+import { Button, Col, Layout, Row} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCurrentUserLogin, selectIsAuth} from "../../redux/auth-selectors";
 import {logoutTC} from "../../redux/auth-reducer";
 
-
-/*type PropsType = {
-    children?: ReactNode
-    isAuth: boolean
-    login: string | null
-    logout: () => void
-
-}*/
 
 export const Header = () => {
 

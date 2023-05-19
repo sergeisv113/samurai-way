@@ -2,7 +2,7 @@ import {ActionsType, AppThunkType} from "./store";
 import {Dispatch} from "redux";
 import {v1} from "uuid";
 import {stopSubmit} from "redux-form";
-import {findContactsInError} from "../utils/findContactsInError";
+import {findContactsInError} from "../utils/helpers/findContactsInError";
 import {FormProfileDataType} from "../components/Profile";
 import {profileAPI} from "../api/profile-api";
 
